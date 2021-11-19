@@ -1,0 +1,11 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: not_slow_maybe_secret_calm_!@#password
+      POSTGRES_DB: slow_and_calm_db
