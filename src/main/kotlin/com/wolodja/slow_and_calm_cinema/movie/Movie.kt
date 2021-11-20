@@ -34,11 +34,10 @@ interface MovieRepository : CrudRepository<Movie, UUID>
 
 data class MovieDto(
     val id: UUID,
-    val imdbId: String,
     val title: String,
     val releaseDate: String?,
     val runtime: String?,
     val imdbRating: BigDecimal?,
-    val plot: String?,
+    val description: String?,
     val director: String?,
 )
