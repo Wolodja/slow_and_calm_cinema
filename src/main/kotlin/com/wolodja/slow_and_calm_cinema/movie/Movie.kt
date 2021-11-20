@@ -1,12 +1,11 @@
 package com.wolodja.slow_and_calm_cinema.movie
 
 import com.wolodja.slow_and_calm_cinema.BaseEntity
+import com.wolodja.slow_and_calm_cinema.showings.Showing
 import org.springframework.data.repository.CrudRepository
 import java.math.BigDecimal
 import java.util.*
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity(name = "movie")
 @Table(name = "movie")
@@ -27,6 +26,9 @@ class Movie(
     val description: String?,
 
     val director: String?,
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie", cascade = [CascadeType.REMOVE])
+    val showings: List<Showing> = emptyList()
 
 ) : BaseEntity()
 

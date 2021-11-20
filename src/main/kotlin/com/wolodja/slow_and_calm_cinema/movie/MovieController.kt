@@ -15,7 +15,7 @@ class MovieController(
 
     @GetMapping("/{movieId}")
     fun getById(@PathVariable("movieId") movieId: UUID) : ResponseEntity<MovieDto>{
-        val result = movieProvider.getMovieById(movieId)
+        val result = movieProvider.getMovie(movieId)
         return ResponseEntity.status(HttpStatus.OK).body(result)
     }
 

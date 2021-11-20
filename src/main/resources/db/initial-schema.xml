@@ -26,4 +26,23 @@
         </createTable>
     </changeSet>
 
+    <changeSet author="wwaskowicz" id="create_showing_table">
+        <createTable tableName="showing">
+            <column name="id" type="UUID">
+                <constraints primaryKeyName="showing_pkey" primaryKey="true" nullable="false"/>
+            </column>
+            <column name="version" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="movie_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time" type="TIMESTAMP ">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price_from" type="NUMERIC"/>
+            <column name="price_to" type="NUMERIC"/>
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>

@@ -1,4 +1,4 @@
-package com.wolodja.slow_and_calm_cinema.movie
+package com.wolodja.slow_and_calm_cinema.comon
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -13,6 +13,14 @@ class ExceptionHandling {
         return ResponseEntity(
             exception.message,
             HttpStatus.NOT_FOUND
+        )
+    }
+
+    @ExceptionHandler(value = [IllegalArgumentException::class])
+    fun exception(exception: IllegalArgumentException): ResponseEntity<Any> {
+        return ResponseEntity(
+            exception.message,
+            HttpStatus.BAD_REQUEST
         )
     }
 }
