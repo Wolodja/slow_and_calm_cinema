@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet author="wwaskowicz" id="create_movie_table">
+        <createTable tableName="movie">
+            <column name="id" type="UUID">
+                <constraints primaryKeyName="movie_pkey" primaryKey="true" nullable="false"/>
+            </column>
+            <column name="version" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="imdb_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="release_date" type="VARCHAR(50)"/>
+            <column name="runtime" type="VARCHAR(50)"/>
+            <column name="imdb_rating" type="NUMERIC"/>
+            <column name="description" type="VARCHAR(5000)"/>
+            <column name="director" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
