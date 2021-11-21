@@ -1,7 +1,6 @@
-package com.wolodja.slow_and_calm_cinema.showings
+package com.wolodja.slow_and_calm_cinema.showing
 
 import com.wolodja.slow_and_calm_cinema.BaseEntity
-import com.wolodja.slow_and_calm_cinema.comon.Money
 import com.wolodja.slow_and_calm_cinema.movie.Movie
 import org.springframework.data.repository.CrudRepository
 import java.math.BigDecimal

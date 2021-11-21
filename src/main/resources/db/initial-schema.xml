@@ -45,4 +45,24 @@
         </createTable>
     </changeSet>
 
+    <changeSet author="wwaskowicz" id="create_showing_user">
+        <createTable tableName="user_table">
+            <column name="id" type="UUID">
+                <constraints primaryKeyName="user_pkey" primaryKey="true" nullable="false"/>
+            </column>
+            <column name="version" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255) ">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="VARCHAR(255) ">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>

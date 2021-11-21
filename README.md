@@ -7,5 +7,7 @@ Cinema backend application.
 * Language: Kotlin
 * Framework: Spring Boot
 * Database: PostgreSQL
+* Database migration: Liquibase
+* Security: Basic Authentication
 
 For more details see pom.xml
