@@ -13,6 +13,10 @@ import java.util.*
 class MovieProvider(
     val movieRepository: MovieRepository
 ) {
+    companion object {
+        const val MOVIE_WITHOUT_VOTES_RATING = "Movie has no votes."
+    }
+
     fun getMovie(movieId: UUID): MovieDto {
         return movieToMovieDto(getMovieEntity(movieId))
     }
@@ -24,7 +28,7 @@ class MovieProvider(
     private fun movieToMovieDto(movie: Movie): MovieDto {
         val votes = movie.votes
         val rating = if (votes.isEmpty()) {
-            "Movie has no votes."
+            MOVIE_WITHOUT_VOTES_RATING
         } else {
             BigDecimal(votes.map { it.rating }.average()).setScale(1, RoundingMode.HALF_EVEN)
         }

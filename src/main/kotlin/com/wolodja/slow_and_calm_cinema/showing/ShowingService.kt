@@ -30,7 +30,7 @@ class ShowingService(
 
 
     fun updateShowing(showingId: UUID, showingDto: ShowingDto) {
-        validateShowing(showingDto,)
+        validateShowing(showingDto)
         val showing = showingRepository.findByIdOrNull(showingId) ?: throw IllegalArgumentException("Provided showing does not exist.")
         showing.apply {
             time = showingDto.time
