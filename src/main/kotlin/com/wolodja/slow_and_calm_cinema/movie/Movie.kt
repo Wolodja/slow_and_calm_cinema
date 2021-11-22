@@ -1,6 +1,7 @@
 package com.wolodja.slow_and_calm_cinema.movie
 
 import com.wolodja.slow_and_calm_cinema.BaseEntity
+import com.wolodja.slow_and_calm_cinema.voting.Voting
 import com.wolodja.slow_and_calm_cinema.showing.Showing
 import org.springframework.data.repository.CrudRepository
 import java.math.BigDecimal
@@ -28,9 +29,13 @@ class Movie(
     val director: String?,
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie", cascade = [CascadeType.REMOVE])
-    val showings: List<Showing> = emptyList()
+    val showings: List<Showing> = emptyList(),
 
-) : BaseEntity()
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie", cascade = [CascadeType.REMOVE])
+    val votes: List<Voting> = emptyList(),
+
+
+    ) : BaseEntity()
 
 interface MovieRepository : CrudRepository<Movie, UUID>
 
@@ -42,4 +47,5 @@ data class MovieDto(
     val imdbRating: BigDecimal?,
     val description: String?,
     val director: String?,
+    val rating: Any
 )

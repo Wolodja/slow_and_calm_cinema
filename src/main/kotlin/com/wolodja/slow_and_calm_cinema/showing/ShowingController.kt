@@ -8,7 +8,7 @@ import java.util.*
 
 @RestController
 @RequestMapping("/api/v1/showing")
-class ShowingController(val showingService: ShowingService) {
+class ShowingController(private val showingService: ShowingService) {
 
     @GetMapping("/movie/{movieId}")
     fun getById(@PathVariable("movieId") movieId: UUID): ResponseEntity<List<ShowingDto>> {

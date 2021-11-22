@@ -23,13 +23,13 @@ class CustomWebSecurityConfigurerAdapter(val authenticationProvider: DaoAuthenti
     override fun configure(http: HttpSecurity) {
         http
             .csrf().disable()
-            .antMatcher("/api/v1/**")
             .authorizeRequests()
+            .antMatchers("/api/v1/voting").hasRole("VIEWER")
             .antMatchers("/api/v1/showing/*").hasRole("OWNER")
             .antMatchers("/api/v1/showing/movie/*").permitAll()
             .antMatchers("/api/v1/viewer/register").permitAll()
             .antMatchers("/api/v1/movie/*").permitAll()
-            .anyRequest().hasRole("OWNER")
+            .anyRequest().authenticated()
             .and()
             .httpBasic()
     }

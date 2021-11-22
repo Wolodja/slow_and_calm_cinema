@@ -43,9 +43,19 @@
             <column name="price_from" type="NUMERIC"/>
             <column name="price_to" type="NUMERIC"/>
         </createTable>
+        <addForeignKeyConstraint baseTableName="showing"
+                                 baseColumnNames="movie_id"
+                                 constraintName="fk_showing_to_movie_id"
+                                 referencedTableName="movie"
+                                 referencedColumnNames="id"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"
+        />
     </changeSet>
 
-    <changeSet author="wwaskowicz" id="create_showing_user">
+    <changeSet author="wwaskowicz" id="create_user_table">
         <createTable tableName="user_table">
             <column name="id" type="UUID">
                 <constraints primaryKeyName="user_pkey" primaryKey="true" nullable="false"/>
@@ -63,6 +73,44 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+    </changeSet>
+
+    <changeSet author="wwaskowicz" id="create_voting_table">
+        <createTable tableName="voting">
+            <column name="id" type="UUID">
+                <constraints primaryKeyName="voting_pkey" primaryKey="true" nullable="false"/>
+            </column>
+            <column name="version" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="movie_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rating" type="NUMERIC"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="voting"
+                                 baseColumnNames="movie_id"
+                                 constraintName="fk_voting_to_movie_id"
+                                 referencedTableName="movie"
+                                 referencedColumnNames="id"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"
+        />
+        <addForeignKeyConstraint baseTableName="voting"
+                                 baseColumnNames="user_id"
+                                 constraintName="fk_voting_to_user_id"
+                                 referencedTableName="user_table"
+                                 referencedColumnNames="id"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"
+        />
     </changeSet>
 
 </databaseChangeLog>

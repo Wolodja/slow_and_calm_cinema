@@ -4,6 +4,8 @@ import com.wolodja.slow_and_calm_cinema.comon.MovieNotFoundException
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.math.BigDecimal
+import java.math.RoundingMode
 import java.util.*
 
 @Service
@@ -20,6 +22,13 @@ class MovieProvider(
     }
 
     private fun movieToMovieDto(movie: Movie): MovieDto {
+        val votes = movie.votes
+        val rating = if (votes.isEmpty()) {
+            "Movie has no votes."
+        } else {
+            BigDecimal(votes.map { it.rating }.average()).setScale(1, RoundingMode.HALF_EVEN)
+        }
+
         return MovieDto(
             id = movie.id,
             title = movie.title,
@@ -27,7 +36,8 @@ class MovieProvider(
             runtime = movie.runtime,
             imdbRating = movie.imdbRating,
             description = movie.description,
-            director = movie.director
+            director = movie.director,
+            rating = rating
         )
     }
 }
