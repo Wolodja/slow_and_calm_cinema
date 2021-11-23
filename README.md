@@ -2,7 +2,6 @@
 
 Cinema backend application.
 
----
 ### Application details
 
 * Language: Kotlin
@@ -12,7 +11,6 @@ Cinema backend application.
 * Security: Basic Authentication
 * API documentation: OpenAPI
 
- ---
 
 ### How to run
 
