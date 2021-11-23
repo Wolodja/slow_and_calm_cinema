@@ -1,4 +1,4 @@
-package com.wolodja.slow_and_calm_cinema
+package com.wolodja.slow_and_calm_cinema.comon
 
 import java.util.*
 import javax.persistence.Id

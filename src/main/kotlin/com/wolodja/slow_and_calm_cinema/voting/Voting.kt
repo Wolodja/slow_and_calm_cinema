@@ -1,6 +1,6 @@
 package com.wolodja.slow_and_calm_cinema.voting
 
-import com.wolodja.slow_and_calm_cinema.BaseEntity
+import com.wolodja.slow_and_calm_cinema.comon.BaseEntity
 import com.wolodja.slow_and_calm_cinema.movie.Movie
 import com.wolodja.slow_and_calm_cinema.user.User
 import org.springframework.data.repository.CrudRepository
